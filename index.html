@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+
+<div id="vis"></div>
+
+<script type="text/javascript">
+  var spec = "https://raw.githubusercontent.com/MillyZhao233/FIT3179_HW9/main/HomeworkMap.json";
+
+  vegaEmbed('#vis', spec).then(function(result) {
+  }).catch(console.error);
+  
+</script>
+
+</body>
+</html>
