@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+  <title>FIT3179 Project 2</title>
+
+  <style>
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    p.hidden {
+      border-style: hidden;
+    }
+
+    .center {
+      margin: auto;
+      width: 60%;
+      border: 3px hidden;
+      padding:
+        10px;
+    }
+
+    .middle {
+      margin: auto;
+      width: 30%;
+      border: 3px hidden;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="page">
+    <!-- pure grid group -->
+    <div class="pure-g" id="top_of_page">
+      <div class="pure-u-1-1">
+        <h1>Air traffic in Australia</h1>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <div class="center" id="description">
+      <!-- pure grid group -->
+      <div class="pure-h">
+        <div class="pure-u-1-1">
+          <h0>Australia is a country who has developed aviation industry. International and domestic aviation connects Australians with each other and with the rest of the world. It is also central to the Australian economy. 
+            <br>The Australian Government, through the department, contributes to the prosperity of the economy and the wellbeing of all Australians by fostering a viable, competitive and safe aviation industry.
+            <br>This visualisation will mainly focus on domestic aviation about Australia in recent years. It will analysis the quantitative metrics about avaition and it will use graph to answer several questions about domestic aviation.
+          </h0>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!--Which countries are happier? -->
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="choropleth_map" class="vis-container"></div>
+      </div>
+    </div>
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <pre>  </pre>
+        <pre>  </pre>
+        <h2>HOW DOES THE AIR TRAFFIC CHANGES 
+          <br>IN RECENT YEARS?
+        </h2>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="line_chart" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-left" id="short">
+          <p>From 1984 to 2019, the total passenger, aircrafts, distance and seats grows. However, the total distance grows slower than other values, 
+            we can inference that the airlines in Australia use planes which can take more passengers.
+            <br>However, these four indicators except for total distance drop sharply in <span style="color: #D55E00">2020</span> due to COVID-19, they reached the number before 2000. The total distance didn't not
+            be influenced, it may because the cargo aviation was still working and took the position of passenger aviation.</p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <pre>  </pre>
+        <h2>WHAT IS THE MOST POPULAR ROUTE
+          <br>IN AUSTRALIA DOMESTIC LINES?
+        </h2>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g" >
+      <div class="pure-u-2-3">
+        <div id="bar_chart" class="vis-container" ></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <p>The most popular domestic line in Australia in <span style="color: #13acf3">Melbourne-Sydney</span>, which had the largest passengers count from 2018 to 2020. 
+            The top-10 lines in Australia are also fixed in recent years, but Brisbane to Cairns and Townsville lines became one of the top-10 in 2020. 
+            The result illustrates that the passenger aviation is well developed in the big city of Australia. Gold coast is also a popular city in Australia as a tourist attraction.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+
+  <script type="text/javascript">
+    var spec1 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/linechart_year.json";
+    var spec2 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/bar_chart.json";
+    var spec3 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/histogram_distance.json";
+    var spec4 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/lines.json";
+    var spec5 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/map_arrival.json";
+    var spec6 = "https://raw.githubusercontent.com/MillyZhao233/FIT3179/main/js/map_departure.json";
+
+
+    vegaEmbed('#line_chart', spec1).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#bar_chart', spec2).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#histogram_chart', spec3).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#bar1_chart', spec4).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#map1', spec5).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#map2', spec6).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+
+  </script>
+
+
+</body>
+
+
+</html>
